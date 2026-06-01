@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import models.Animal;
 import models.Produtos;
+import models.Forma;
 
 public class principal {
     public static void main(String[] args) {
@@ -21,5 +22,29 @@ public class principal {
         System.out.println("média: " +carrinho.stream()
                                 .mapToDouble(Produtos::getPreco)
                                 .sum()/carrinho.size());
+
+        var cir = new Circulo();
+        var quad = new Quadrado();
+        quad.calcularArea(3.4);
+        cir.calcularArea(7);
+        ArrayList<Forma> lousa = new ArrayList<>(List.of(quad, cir));
+        lousa.forEach(System.out::println);
+
+        ArrayList<ContaBancaria> contas = new ArrayList<>();
+        ContaBancaria conta1 = new ContaBancaria();
+        ContaBancaria conta2 = new ContaBancaria();
+        ContaBancaria conta3 = new ContaBancaria();
+
+        conta1.adicionar(10);
+        conta2.adicionar(10);
+        conta3.adicionar(200);
+
+        contas.add(conta1);
+        contas.add(conta2);
+        contas.add(conta3);
+
+        System.out.println(contas.stream()
+                .mapToDouble(ContaBancaria::getSaldo)
+                .max());
     }    
 }
